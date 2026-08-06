@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biologia Ativa: Aulas 1 a 6 | Ensino Médio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+      body { font-family: 'Inter', sans-serif; }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 flex flex-col min-h-screen selection:bg-indigo-500 selection:text-white">
+    <!-- Header -->
+    <header class="bg-slate-900 text-white border-b border-slate-800 sticky top-0 z-50 backdrop-blur-md bg-opacity-95">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <div class="bg-indigo-600 p-2.5 rounded-xl shadow-lg shadow-indigo-500/30 flex items-center justify-center">
+                    <i class="fas fa-dna text-white text-xl animate-pulse"></i>
+                </div>
+                <div>
+                    <span class="text-xs uppercase tracking-wider text-indigo-400 font-semibold">Ensino Médio • Biologia</span>
+                    <h1 class="text-xl sm:text-2xl font-bold tracking-tight text-white">Biologia Ativa: Aulas 1 a 6</h1>
+                </div>
+            </div>
+            
+            <nav class="hidden md:flex items-center space-x-1">
+                <button onclick="switchTab('lessons')" id="btn-lessons" class="px-4 py-2 rounded-lg text-sm font-medium transition-all bg-indigo-600 text-white shadow-md">
+                    Conteúdo & Resumos (1-6)
+                </button>
+                <button onclick="switchTab('activity')" id="btn-activity" class="px-4 py-2 rounded-lg text-sm font-medium transition-all text-slate-300 hover:bg-slate-800 hover:text-white flex items-center space-x-1.5">
+                    <i class="fas fa-users"></i>
+                    <span>Tribunal da Genética</span>
+                </button>
+                <button onclick="switchTab('slides')" id="btn-slides" class="px-4 py-2 rounded-lg text-sm font-medium transition-all text-slate-300 hover:bg-slate-800 hover:text-white flex items-center space-x-1.5">
+                    <i class="fas fa-sparkles"></i>
+                    <span>Guia de Slides</span>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Mobile Nav -->
+    <div class="md:hidden bg-slate-800 text-white px-4 py-2 flex justify-around border-b border-slate-700">
+        <button onclick="switchTab('lessons')" id="m-btn-lessons" class="text-xs font-medium py-1 px-3 rounded bg-indigo-600 text-white">Aulas (1-6)</button>
+        <button onclick="switchTab('activity')" id="m-btn-activity" class="text-xs font-medium py-1 px-3 rounded text-slate-300">Atividade</button>
+        <button onclick="switchTab('slides')" id="m-btn-slides" class="text-xs font-medium py-1 px-3 rounded text-slate-300">Slides</button>
+    </div>
+
+    <!-- Main Container -->
+    <main class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        
+        <!-- SECTION: LESSONS -->
+        <div id="view-lessons" class="space-y-8">
+            <!-- Hero Banner -->
+            <div class="bg-gradient-to-r from-indigo-900 via-slate-900 to-indigo-950 text-white rounded-3xl p-8 sm:p-10 shadow-2xl relative overflow-hidden border border-indigo-500/20">
+                <div class="max-w-3xl relative z-10">
+                    <span class="inline-flex items-center space-x-2 bg-indigo-500/20 text-indigo-300 px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider mb-4 border border-indigo-500/30">
+                        <i class="fas fa-sparkles text-xs"></i>
+                        <span>Plataforma Didática Otimizada</span>
+                    </span>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight mb-4 leading-tight">
+                        Da Molécula de DNA à Bioética e Engenharia Genética
+                    </h2>
+                    <p class="text-slate-300 text-base sm:text-lg mb-6 leading-relaxed">
+                        Explore os resumos essenciais das <strong>Aulas 1 a 6</strong> do 3º bimestre. Clique nos conceitos abaixo para expandir as definições e otimize suas aulas.
+                    </p>
+                    <button onclick="switchTab('activity')" class="bg-indigo-600 hover:bg-indigo-500 text-white font-medium px-6 py-3 rounded-xl transition-all shadow-lg shadow-indigo-600/30 flex items-center space-x-2">
+                        <span>Ir para Atividade Prática</span>
+                        <i class="fas fa-play text-xs"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Content Grid -->
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+                <!-- Sidebar -->
+                <div class="lg:col-span-4 bg-white rounded-2xl shadow-sm border border-slate-200 p-4 sticky top-28">
+                    <h3 class="text-xs uppercase font-bold tracking-wider text-slate-400 px-3 mb-3">Módulos de Estudo</h3>
+                    <div class="space-y-1.5" id="lesson-buttons">
+                        <!-- Populated by JS -->
+                    </div>
+                </div>
+
+                <!-- Active Lesson Card -->
+                <div class="lg:col-span-8 bg-white rounded-2xl shadow-sm border border-slate-200 p-6 sm:p-8" id="lesson-detail">
+                    <!-- Populated by JS -->
+                </div>
+            </div>
+        </div>
+
+        <!-- SECTION: ACTIVITY -->
+        <div id="view-activity" class="space-y-8 hidden max-w-5xl mx-auto">
+            <div class="bg-gradient-to-br from-indigo-900 to-slate-900 text-white rounded-3xl p-8 sm:p-10 shadow-xl border border-indigo-500/20">
+                <span class="inline-flex items-center space-x-2 bg-indigo-500/20 text-indigo-300 px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider mb-4">
+                    <i class="fas fa-users text-xs"></i>
+                    <span>Metodologia Ativa Otimizada</span>
+                </span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight mb-4">
+                    O Tribunal da Genética: Da Molécula à Edição
+                </h2>
+                <p class="text-slate-300 text-base sm:text-lg leading-relaxed mb-6">
+                    Desenvolvida especialmente para turmas com apenas <strong>2 aulas semanais</strong>. Integra em <strong>uma única aula dupla (90 minutos)</strong> todos os conceitos das Aulas 2 a 6.
+                </p>
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 text-center">
+                    <div class="bg-slate-800/80 p-4 rounded-xl border border-slate-700">
+                        <p class="text-xs text-slate-400 uppercase font-bold">Tempo Teórico</p>
+                        <p class="text-xl font-bold text-indigo-400 mt-1">30 min</p>
+                        <p class="text-xs text-slate-300 mt-0.5">Micro-aula & Registro no Caderno</p>
+                    </div>
+                    <div class="bg-slate-800/80 p-4 rounded-xl border border-slate-700">
+                        <p class="text-xs text-slate-400 uppercase font-bold">Trabalho em Bancas</p>
+                        <p class="text-xl font-bold text-indigo-400 mt-1">35 min</p>
+                        <p class="text-xs text-slate-300 mt-0.5">Resolução de Casos Práticos</p>
+                    </div>
+                    <div class="bg-slate-800/80 p-4 rounded-xl border border-slate-700">
+                        <p class="text-xs text-slate-400 uppercase font-bold">Plenária & Síntese</p>
+                        <p class="text-xl font-bold text-indigo-400 mt-1">25 min</p>
+                        <p class="text-xs text-slate-300 mt-0.5">Pitches Relâmpago & Avaliação</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-3xl shadow-sm border border-slate-200 p-8">
+                <h3 class="text-xl font-bold text-slate-900 mb-6 flex items-center space-x-2">
+                    <i class="fas fa-award text-indigo-600"></i>
+                    <span>As 4 Bancas de Especialistas (Dossiês de Casos)</span>
+                </h3>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="border border-slate-200 rounded-2xl p-6 bg-slate-50/50 hover:border-indigo-300 transition-all flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between mb-3">
+                                <span class="text-xs font-bold text-indigo-600 bg-indigo-50 px-3 py-1 rounded-full">Banca 1</span>
+                                <span class="text-xs text-slate-500 font-mono">Aulas 2, 3 e 4</span>
+                            </div>
+                            <h4 class="font-bold text-slate-900 text-lg mb-2">O Mistério da Mutação Genética</h4>
+                            <p class="text-slate-600 text-sm leading-relaxed mb-4">
+                                <strong>Caso:</strong> Um paciente apresenta proteína defeituosa devido à troca de base nitrogenada (timina por citosina) no DNA.
+                            </p>
+                            <p class="text-indigo-900 bg-indigo-50/60 p-3 rounded-xl text-xs font-medium">
+                                🎯 <strong>Missão:</strong> Demonstrar no papel como essa alteração afeta a transcrição do mRNA e a tradução proteica.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="border border-slate-200 rounded-2xl p-6 bg-slate-50/50 hover:border-indigo-300 transition-all flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between mb-3">
+                                <span class="text-xs font-bold text-indigo-600 bg-indigo-50 px-3 py-1 rounded-full">Banca 2</span>
+                                <span class="text-xs text-slate-500 font-mono">Aulas 2, 3 e 6</span>
+                            </div>
+                            <h4 class="font-bold text-slate-900 text-lg mb-2">A Biofábrica de Insulina</h4>
+                            <p class="text-slate-600 text-sm leading-relaxed mb-4">
+                                <strong>Caso:</strong> Indústria precisa produzir insulina humana em larga escala utilizando bactérias.
+                            </p>
+                            <p class="text-indigo-900 bg-indigo-50/60 p-3 rounded-xl text-xs font-medium">
+                                🎯 <strong>Missão:</strong> Explicar o DNA recombinante e a integração do gene humano no plasmídeo bacteriano.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="border border-slate-200 rounded-2xl p-6 bg-slate-50/50 hover:border-indigo-300 transition-all flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between mb-3">
+                                <span class="text-xs font-bold text-indigo-600 bg-indigo-50 px-3 py-1 rounded-full">Banca 3</span>
+                                <span class="text-xs text-slate-500 font-mono">Aulas 2 e 5</span>
+                            </div>
+                            <h4 class="font-bold text-slate-900 text-lg mb-2">O Bisturi Molecular CRISPR/Cas9</h4>
+                            <p class="text-slate-600 text-sm leading-relaxed mb-4">
+                                <strong>Caso:</strong> Agricultores debatem o uso do CRISPR/Cas9 para tornar o milho resistente a pragas.
+                            </p>
+                            <p class="text-indigo-900 bg-indigo-50/60 p-3 rounded-xl text-xs font-medium">
+                                🎯 <strong>Missão:</strong> Explicar a edição genômica e estabelecer critérios científicos de validação de fontes.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="border border-slate-200 rounded-2xl p-6 bg-slate-50/50 hover:border-indigo-300 transition-all flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between mb-3">
+                                <span class="text-xs font-bold text-indigo-600 bg-indigo-50 px-3 py-1 rounded-full">Banca 4</span>
+                                <span class="text-xs text-slate-500 font-mono">Aulas 5 e 6</span>
+                            </div>
+                            <h4 class="font-bold text-slate-900 text-lg mb-2">O Dilema da Clonagem</h4>
+                            <p class="text-slate-600 text-sm leading-relaxed mb-4">
+                                <strong>Caso:</strong> Centro de pesquisa debate clonagem terapêutica versus clonagem reprodutiva.
+                            </p>
+                            <p class="text-indigo-900 bg-indigo-50/60 p-3 rounded-xl text-xs font-medium">
+                                🎯 <strong>Missão:</strong> Diferenciar clonagem terapêutica de reprodutiva com embasamento bioético.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SECTION: SLIDES -->
+        <div id="view-slides" class="space-y-8 hidden max-w-4xl mx-auto">
+            <div class="bg-white rounded-3xl shadow-sm border border-slate-200 p-8 sm:p-10">
+                <span class="inline-flex items-center space-x-2 bg-indigo-50 text-indigo-600 px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider mb-4">
+                    <i class="fas fa-sparkles text-xs"></i>
+                    <span>Apresentação Pronta</span>
+                </span>
+                <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 mb-4">
+                    Guia de Slides para Projeção em Sala de Aula
+                </h2>
+                <p class="text-slate-600 text-base leading-relaxed mb-6">
+                    Apresentação completa com <strong>6 slides customizados</strong> (um para cada aula), integrando tipografia refinada e diagramas visuais.
+                </p>
+                <div class="space-y-4" id="slides-list">
+                    <!-- Populated by JS -->
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-slate-400 py-8 border-t border-slate-800 mt-16">
+        <div class="max-w-7xl mx-auto px-4 text-center text-xs sm:text-sm">
+            <p>© 2026 Biologia Ativa • Desenvolvido para Professores do Ensino Médio.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript Logic -->
+    <script>
+        const lessons = [
+            {
+                id: 1,
+                title: "Aula 1: Células HeLa e Bioética",
+                subtitle: "A ética nas pesquisas científicas e os direitos humanos",
+                summary: "Estudo do caso histórico de Henrietta Lacks cujas células foram coletadas sem consentimento, fundamentando a bioética moderna e os comitês de ética.",
+                objectives: [
+                    "Analisar dilemas éticos na pesquisa científica com seres humanos.",
+                    "Compreender a importância do consentimento informado e da confidencialidade.",
+                    "Conhecer o Sistema CEP/CONEP no Brasil."
+                ],
+                concepts: [
+                    { title: "Células HeLa", desc: "Retiradas de Henrietta Lacks em 1951 sem consentimento. Immortalizadas em laboratório, deram origem a mais de 70 mil artigos científicos (vacinas da pólio, AIDS, HPV)." },
+                    { title: "Bioética", desc: "Ramo da ética aplicado às ciências da vida e da saúde, buscando soluções para conflitos morais e garantindo dignidade aos pacientes." },
+                    { title: "Princípio da Confidencialidade", desc: "Prática e dever de manter em sigilo absoluto as informações compartilhadas entre pesquisador e participante ou médico e paciente." },
+                    { title: "Sistema CEP/CONEP", desc: "Comitês de Ética em Pesquisa (CEP) coordenados pela Comissão Nacional de Ética em Pesquisa (CONEP) que protegem os participantes." }
+                ],
+                imagePath: "https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?auto=format&fit=crop&w=800&q=80",
+                imageCaption: "Pesquisa laboratorial e bioética: o equilíbrio entre inovação e respeito à dignidade."
+            },
+            {
+                id: 2,
+                title: "Aula 2: DNA e RNA (Estrutura e Diferenciação)",
+                subtitle: "Os ácidos nucleicos e a base da hereditariedade",
+                summary: "Diferenciação estrutural e funcional entre as moléculas de DNA e RNA, analisando nucleotídeos, pentoses e bases nitrogenadas.",
+                objectives: [
+                    "Retomar conceitos fundamentais de genética e ácidos nucleicos.",
+                    "Diferenciar estrutural e funcionalmente o DNA e o RNA.",
+                    "Identificar o papel do genoma nos organismos vivos."
+                ],
+                concepts: [
+                    { title: "Nucleotídeos", desc: "Unidades fundamentais dos ácidos nucleicos, compostas por um grupo fosfato, uma pentose (açúcar) e uma base nitrogenada." },
+                    { title: "DNA (Ácido Desoxirribonucleico)", desc: "Dupla hélice, açúcar desoxirribose, bases nitrogenadas Adenina (A), Timina (T), Citosina (C) e Guanina (G). Pareamento A-T e C-G." },
+                    { title: "RNA (Ácido Ribonucleico)", desc: "Fita simples, açúcar ribose, bases nitrogenadas Adenina (A), Uracila (U), Citosina (C) e Guanina (G). Pareamento A-U e C-G." },
+                    { title: "Genoma", desc: "Conjunto completo de material genético (DNA) de um organismo." }
+                ],
+                imagePath: "https://images.unsplash.com/photo-1507668077129-56e32842fceb?auto=format&fit=crop&w=800&q=80",
+                imageCaption: "Representação molecular da dupla hélice do DNA, o código universal da vida."
+            },
+            {
+                id: 3,
+                title: "Aula 3: Transcrição Genética",
+                subtitle: "A fabricação da cópia mensageira no núcleo",
+                summary: "Compreensão do processo de transcrição, onde o DNA serve como molde para a produção de RNA mensageiro (mRNA) no núcleo celular.",
+                objectives: [
+                    "Identificar o processo de transcrição e a atuação da RNA Polimerase.",
+                    "Compreender a necessidade da molécula de mRNA como intermediária.",
+                    "Analisar a importância funcional dos diferentes tipos de RNA."
+                ],
+                concepts: [
+                    { title: "Localização", desc: "Ocorre exclusivamente no núcleo celular eucariótico, onde o DNA está protegido." },
+                    { title: "RNA Polimerase", desc: "Enzima principal que abre a fita dupla de DNA e cataliza a montagem do filamento complementar de mRNA." },
+                    { title: "Fita Molde", desc: "A fita de DNA que é lida pela enzima para determinar a sequência de bases do RNA mensageiro." },
+                    { title: "Tipos de RNA", desc: "mRNA (Mensageiro - traz a receita), tRNA (Transportador - carrega aminoácidos) e rRNA (Ribossômico - forma os ribossomos)." }
+                ],
+                imagePath: "https://images.unsplash.com/photo-1579165466741-7f35e4755660?auto=format&fit=crop&w=800&q=80",
+                imageCaption: "Dinâmica molecular de transcrição genética no núcleo celular."
+            },
+            {
+                id: 4,
+                title: "Aula 4: Tradução e Código Genético",
+                subtitle: "A linha de montagem de proteínas nos ribossomos",
+                summary: "Estudo do código genético e do processo de tradução, onde o mRNA é decodificado em sequências de aminoácidos formadoras de proteínas.",
+                objectives: [
+                    "Identificar o processo de tradução e a leitura dos códons.",
+                    "Compreender a interação entre mRNA, tRNA e ribossomos.",
+                    "Analisar a relação entre o fluxo gênico e a síntese proteica."
+                ],
+                concepts: [
+                    { title: "Código Genético", desc: "Conjunto de regras em que trincas de bases nitrogenadas do mRNA (códons) correspondem a aminoácidos específicos." },
+                    { title: "Códon e Anticódon", desc: "Códon é a trinca no mRNA; anticódon é a trinca complementar localizada no tRNA que garante a entrega do aminoácido correto." },
+                    { title: "Ribossomo", desc: "Organela citoplasmática formada por rRNA e proteínas que promove o encaixe perfeito entre mRNA e tRNAs." },
+                    { title: "Cadeia Polipeptídica", desc: "Sequência de aminoácidos unida por ligações peptídicas que se dobra para formar uma proteína funcional." }
+                ],
+                imagePath: "https://images.unsplash.com/photo-1530497610245-94d3c16cda28?auto=format&fit=crop&w=800&q=80",
+                imageCaption: "Síntese proteica e tradução ribossômica no citoplasma."
+            },
+            {
+                id: 5,
+                title: "Aula 5: Engenharia Genética e CRISPR/Cas9",
+                subtitle: "O bisturi molecular da edição de DNA",
+                summary: "Introdução à biotecnologia avançada com a tecnologia CRISPR/Cas9 de edição gênica e critérios de validação de fontes científicas.",
+                objectives: [
+                    "Identificar a tecnologia de edição de DNA CRISPR/Cas9.",
+                    "Analisar aplicações agrícolas e médicas da engenharia genética.",
+                    "Desenvolver criticidade na verificação de notícias científicas."
+                ],
+                concepts: [
+                    { title: "Engenharia Genética", desc: "Conjunto de técnicas para manipulação direta do material genético (DNA) de um organismo." },
+                    { title: "Sistema CRISPR/Cas9", desc: "Tecnologia inspirada em defesas bacterianas que atua como um 'bisturi molecular', cortando, corrigindo ou desativando genes com alta precisão." },
+                    { title: "Confiabilidade de Fontes", desc: "Critérios fundamentais para avaliar notícias científicas: reputação da fonte, metodologia clara, autoria e dados validados." }
+                ],
+                imagePath: "https://images.unsplash.com/photo-1530026405186-ed1f139313f8?auto=format&fit=crop&w=800&q=80",
+                imageCaption: "Edição genética de precisão e biotecnologia moderna."
+            },
+            {
+                id: 6,
+                title: "Aula 6: DNA Recombinante e Clonagem",
+                subtitle: "Insulina sintética e o debate ético da clonagem",
+                summary: "Explicação do DNA recombinante na produção de insulina humana e diferenciação crítica entre clonagem terapêutica e reprodutiva.",
+                objectives: [
+                    "Compreender a técnica do DNA recombinante na produção de medicamentos.",
+                    "Diferenciar clonagem terapêutica e clonagem reprodutiva.",
+                    "Debater situações controversas da engenharia genética."
+                ],
+                concepts: [
+                    { title: "DNA Recombinante", desc: "Técnica de unir o gene humano de interesse (ex: gene da insulina) ao DNA de bactérias, transformando-as em biofábricas." },
+                    { title: "Clonagem Terapêutica", desc: "Produção de células-tronco ou tecidos em laboratório com foco exclusivo na regeneração de órgãos e tratamento de doenças." },
+                    { title: "Clonagem Reprodutiva", desc: "Processo para gerar um novo organismo completo e geneticamente idêntico ao doador (ex: Ovelha Dolly)." }
+                ],
+                imagePath: "https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&w=800&q=80",
+                imageCaption: "Biotecnologia aplicada: da produção de biofármacos à clonagem celular."
+            }
+        ];
+
+        let currentLessonId = 1;
+
+        function switchTab(tab) {
+            document.getElementById('view-lessons').classList.add('hidden');
+            document.getElementById('view-activity').classList.add('hidden');
+            document.getElementById('view-slides').classList.add('hidden');
+
+            document.getElementById('btn-lessons').className = "px-4 py-2 rounded-lg text-sm font-medium transition-all text-slate-300 hover:bg-slate-800 hover:text-white";
+            document.getElementById('btn-activity').className = "px-4 py-2 rounded-lg text-sm font-medium transition-all text-slate-300 hover:bg-slate-800 hover:text-white flex items-center space-x-1.5";
+            document.getElementById('btn-slides').className = "px-4 py-2 rounded-lg text-sm font-medium transition-all text-slate-300 hover:bg-slate-800 hover:text-white flex items-center space-x-1.5";
+
+            document.getElementById('m-btn-lessons').className = "text-xs font-medium py-1 px-3 rounded text-slate-300";
+            document.getElementById('m-btn-activity').className = "text-xs font-medium py-1 px-3 rounded text-slate-300";
+            document.getElementById('m-btn-slides').className = "text-xs font-medium py-1 px-3 rounded text-slate-300";
+
+            if (tab === 'lessons') {
+                document.getElementById('view-lessons').classList.remove('hidden');
+                document.getElementById('btn-lessons').className = "px-4 py-2 rounded-lg text-sm font-medium transition-all bg-indigo-600 text-white shadow-md";
+                document.getElementById('m-btn-lessons').className = "text-xs font-medium py-1 px-3 rounded bg-indigo-600 text-white";
+            } else if (tab === 'activity') {
+                document.getElementById('view-activity').classList.remove('hidden');
+                document.getElementById('btn-activity').className = "px-4 py-2 rounded-lg text-sm font-medium transition-all bg-indigo-600 text-white shadow-md flex items-center space-x-1.5";
+                document.getElementById('m-btn-activity').className = "text-xs font-medium py-1 px-3 rounded bg-indigo-600 text-white";
+            } else if (tab === 'slides') {
+                document.getElementById('view-slides').classList.remove('hidden');
+                document.getElementById('btn-slides').className = "px-4 py-2 rounded-lg text-sm font-medium transition-all bg-indigo-600 text-white shadow-md flex items-center space-x-1.5";
+                document.getElementById('m-btn-slides').className = "text-xs font-medium py-1 px-3 rounded bg-indigo-600 text-white";
+            }
+        }
+
+        function selectLesson(id) {
+            currentLessonId = id;
+            renderLessons();
+        }
+
+        function toggleConcept(index) {
+            const el = document.getElementById(`concept-desc-${index}`);
+            const icon = document.getElementById(`concept-icon-${index}`);
+            if (el.classList.contains('hidden')) {
+                el.classList.remove('hidden');
+                icon.className = "fas fa-chevron-up text-indigo-600";
+            } else {
+                el.classList.add('hidden');
+                icon.className = "fas fa-chevron-down text-slate-400";
+            }
+        }
+
+        function renderLessons() {
+            // Sidebar buttons
+            const sbContainer = document.getElementById('lesson-buttons');
+            sbContainer.innerHTML = lessons.map(l => `
+                <button onclick="selectLesson(${l.id})" class="w-full text-left px-4 py-3 rounded-xl transition-all flex items-center justify-between ${currentLessonId === l.id ? 'bg-indigo-50 text-indigo-900 border-l-4 border-indigo-600 font-semibold shadow-sm' : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900'}">
+                    <div class="flex items-center space-x-3">
+                        <div class="p-2 rounded-lg ${currentLessonId === l.id ? 'bg-indigo-600 text-white' : 'bg-slate-100 text-slate-500'}">
+                            <i class="fas fa-book-open text-sm"></i>
+                        </div>
+                        <div>
+                            <p class="text-sm font-bold">Aula ${l.id}</p>
+                            <p class="text-xs text-slate-500 truncate max-w-[170px]">${l.title.split(': ')[1]}</p>
+                        </div>
+                    </div>
+                </button>
+            `).join('');
+
+            // Detail Card
+            const lesson = lessons.find(l => l.id === currentLessonId);
+            const detailContainer = document.getElementById('lesson-detail');
+            detailContainer.innerHTML = `
+                <div class="border-b border-slate-100 pb-6 mb-6">
+                    <span class="text-xs font-bold text-indigo-600 bg-indigo-50 px-3 py-1 rounded-full uppercase tracking-wider">Aula ${lesson.id}</span>
+                    <h3 class="text-2xl sm:text-3xl font-bold text-slate-900 mt-2">${lesson.title}</h3>
+                    <p class="text-slate-600 text-sm sm:text-base mt-1">${lesson.subtitle}</p>
+                </div>
+
+                <div class="relative rounded-2xl overflow-hidden shadow-md mb-8 group bg-slate-900 h-64 sm:h-80">
+                    <img src="${lesson.imagePath}" alt="${lesson.title}" class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105" />
+                    <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-950/20 to-transparent flex flex-col justify-end p-6">
+                        <p class="text-white text-sm font-medium leading-snug">${lesson.imageCaption}</p>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                    <div class="bg-slate-50 p-5 rounded-2xl border border-slate-100">
+                        <h4 class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-2 flex items-center space-x-2">
+                            <i class="fas fa-book text-indigo-600"></i>
+                            <span>Resumo da Aula</span>
+                        </h4>
+                        <p class="text-slate-700 text-sm leading-relaxed">${lesson.summary}</p>
+                    </div>
+
+                    <div class="bg-indigo-50/50 p-5 rounded-2xl border border-indigo-100">
+                        <h4 class="text-xs font-bold uppercase tracking-wider text-indigo-600 mb-2 flex items-center space-x-2">
+                            <i class="fas fa-check-circle text-indigo-600"></i>
+                            <span>Aprendizagens Essenciais</span>
+                        </h4>
+                        <ul class="space-y-1.5">
+                            ${lesson.objectives.map(obj => `<li class="text-slate-700 text-xs sm:text-sm flex items-start space-x-2"><span class="text-indigo-600 font-bold">•</span><span>${obj}</span></li>`).join('')}
+                        </ul>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="text-base font-bold text-slate-900 mb-4">Conceitos Chave & Definições (Clique para Expandir)</h4>
+                    <div class="space-y-3">
+                        ${lesson.concepts.map((c, idx) => `
+                            <div class="border border-slate-200 rounded-xl overflow-hidden transition-all bg-white hover:border-indigo-300">
+                                <button onclick="toggleConcept(${idx})" class="w-full p-4 bg-slate-50 hover:bg-indigo-50/40 text-left flex items-center justify-between transition-colors">
+                                    <span class="font-semibold text-slate-900 text-sm sm:text-base flex items-center space-x-2">
+                                        <span class="w-2 h-2 rounded-full bg-indigo-600"></span>
+                                        <span>${c.title}</span>
+                                    </span>
+                                    <i id="concept-icon-${idx}" class="fas fa-chevron-down text-slate-400"></i>
+                                </button>
+                                <div id="concept-desc-${idx}" class="p-4 text-slate-600 text-sm leading-relaxed border-t border-slate-100 bg-white hidden">
+                                    ${c.desc}
+                                </div>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+
+                <div class="mt-8 pt-6 border-t border-slate-100 flex items-center justify-between">
+                    <button onclick="selectLesson(${currentLessonId > 1 ? currentLessonId - 1 : 6})" class="px-4 py-2 rounded-xl text-xs sm:text-sm font-medium border border-slate-200 text-slate-600 hover:bg-slate-50 transition-colors">← Aula Anterior</button>
+                    <span class="text-xs text-slate-400 font-mono">Aula ${currentLessonId} de 6</span>
+                    <button onclick="selectLesson(${currentLessonId < 6 ? currentLessonId + 1 : 1})" class="px-4 py-2 rounded-xl text-xs sm:text-sm font-medium bg-indigo-600 text-white hover:bg-indigo-500 transition-colors">Próxima Aula →</button>
+                </div>
+            `;
+        }
+
+        function renderSlides() {
+            const list = document.getElementById('slides-list');
+            list.innerHTML = lessons.map(l => `
+                <div class="border border-slate-200 rounded-2xl p-5 flex items-center justify-between hover:bg-slate-50 transition-colors">
+                    <div class="flex items-center space-x-4">
+                        <div class="bg-indigo-600 text-white w-10 h-10 rounded-xl flex items-center justify-center font-bold">${l.id}</div>
+                        <div>
+                            <h4 class="font-bold text-slate-900 text-base">${l.title}</h4>
+                            <p class="text-xs text-slate-500">${l.subtitle}</p>
+                        </div>
+                    </div>
+                    <span class="text-xs font-semibold text-indigo-600 bg-indigo-50 px-3 py-1 rounded-lg">Pronto para Projeção</span>
+                </div>
+            `).join('');
+        }
+
+        // Initialize
+        renderLessons();
+        renderSlides();
+    </script>
+</body>
+</html>
