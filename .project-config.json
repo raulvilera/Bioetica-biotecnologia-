@@ -1,0 +1,34 @@
+{
+  "build_command": "pnpm run build",
+  "capabilities": [],
+  "dev_command": "pnpm run dev",
+  "env_vars": {},
+  "experiments": null,
+  "git_remote": {
+    "repo_url": "https://7f0548f6b28a1758d9bf7be630d36cb4.artifacts.cloudflare.net/git/prod/MshN2jZmGKHYndBd3F2E76.git",
+    "expiration": "2026-08-07T07:50:18.919Z",
+    "token": "art_v1_224c2eda967833758bf275f367742f2922c0bcc8?expires=1786089018",
+    "backend": "GIT_BACKEND_ARTIFACTS"
+  },
+  "name": "biologia-aulas-ativas",
+  "path": "/home/ubuntu/biologia-aulas-ativas",
+  "port": 3000,
+  "secrets": {
+    "BUILT_IN_FORGE_API_KEY": "UiKmuhbHYv7YmAYhSfJebi",
+    "BUILT_IN_FORGE_API_URL": "https://forge.manus.ai",
+    "JWT_SECRET": "CYvLLs9N4fHqdiFeHf3y4L",
+    "OAUTH_SERVER_URL": "https://api.manus.im",
+    "OWNER_NAME": "E.E. Lydia Kitz Moreira",
+    "OWNER_OPEN_ID": "g5y64qoca7mUaMShnfaGf7",
+    "VITE_ANALYTICS_ENDPOINT": "https://manus-analytics.com",
+    "VITE_ANALYTICS_WEBSITE_ID": "0df73d05-9f68-4a27-b9c3-b03cb847b6d7",
+    "VITE_APP_ID": "MshN2jZmGKHYndBd3F2E76",
+    "VITE_APP_LOGO": "",
+    "VITE_APP_TITLE": "Biologia Interativa: Aulas 1 a 6 e Metodologia Ativa",
+    "VITE_FRONTEND_FORGE_API_KEY": "3pQFTvpGuNW6KUXDdUrm4d",
+    "VITE_FRONTEND_FORGE_API_URL": "https://forge.manus.ai",
+    "VITE_OAUTH_PORTAL_URL": "https://manus.im"
+  },
+  "template_id": "web-static",
+  "test_command": "pnpm test"
+}
