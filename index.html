@@ -58,13 +58,13 @@
                 <div class="max-w-3xl">
                     <span class="inline-flex items-center space-x-2 bg-indigo-500/20 text-indigo-300 px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider mb-4 border border-indigo-500/30">
                         <i class="fas fa-sparkles text-xs"></i>
-                        <span>Plataforma Didática Otimizada</span>
+                        <span>Plataforma Didática Otimizada com Infográficos Científicos</span>
                     </span>
                     <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight mb-4 leading-tight">
                         Da Molécula de DNA à Bioética e Engenharia Genética
                     </h2>
                     <p class="text-slate-300 text-base sm:text-lg mb-6 leading-relaxed">
-                        Explore os resumos essenciais das <strong>Aulas 1 a 6</strong> do 3º bimestre com imagens científicas reais e representativas.
+                        Explore os resumos essenciais das <strong>Aulas 1 a 6</strong> com diagramas vetoriais educativos de alta precisão pedagógica.
                     </p>
                     <button onclick="switchTab('activity')" class="bg-indigo-600 hover:bg-indigo-500 text-white font-medium px-6 py-3 rounded-xl transition-all shadow-lg shadow-indigo-600/30 flex items-center space-x-2">
                         <span>Ir para Atividade Prática</span>
@@ -223,7 +223,7 @@
         </div>
     </footer>
 
-    <!-- JavaScript Logic -->
+    <!-- JavaScript Logic with Custom Educational SVG Diagrams -->
     <script>
         const lessons = [
             {
@@ -242,8 +242,51 @@
                     { title: "Princípio da Confidencialidade", desc: "Prática e dever de manter em sigilo absoluto as informações compartilhadas entre pesquisador e participante ou médico e paciente." },
                     { title: "Sistema CEP/CONEP", desc: "Comitês de Ética em Pesquisa (CEP) coordenados pela Comissão Nacional de Ética em Pesquisa (CONEP) que protegem os participantes." }
                 ],
-                imagePath: "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=1000&q=80",
-                imageCaption: "Pesquisa biomédica e microscopia laboratorial: o marco histórico da bioética e dos comitês de ética."
+                svgDiagram: `
+                    <svg viewBox="0 0 800 360" class="w-full h-full bg-gradient-to-br from-slate-900 via-indigo-950 to-slate-900" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stop-color="#6366f1" />
+                                <stop offset="100%" stop-color="#4f46e5" />
+                            </linearGradient>
+                        </defs>
+                        <!-- Background Grid -->
+                        <path d="M0 60 H800 M0 120 H800 M0 180 H800 M0 240 H800 M0 300 H800" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
+                        
+                        <!-- Central Bioethics Scale Icon -->
+                        <g transform="translate(400, 150)">
+                            <circle cx="0" cy="0" r="70" fill="rgba(99, 102, 241, 0.15)" stroke="#818cf8" stroke-width="2" />
+                            <path d="M-30 -20 H30 M0 -30 V20 M-40 20 H40" stroke="#ffffff" stroke-width="4" stroke-linecap="round"/>
+                            <circle cx="-40" cy="25" r="15" fill="#4f46e5" stroke="#fff" stroke-width="2"/>
+                            <circle cx="40" cy="25" r="15" fill="#4f46e5" stroke="#fff" stroke-width="2"/>
+                        </g>
+
+                        <!-- Floating Nodes representing Ethical Pillars -->
+                        <g transform="translate(150, 100)">
+                            <rect x="-70" y="-30" width="140" height="60" rx="12" fill="#1e1b4b" stroke="#818cf8" stroke-width="2"/>
+                            <text x="0" y="5" fill="#e0e7ff" font-family="Inter, sans-serif" font-size="14" font-weight="bold" text-anchor="middle">Consentimento</text>
+                        </g>
+
+                        <g transform="translate(650, 100)">
+                            <rect x="-70" y="-30" width="140" height="60" rx="12" fill="#1e1b4b" stroke="#818cf8" stroke-width="2"/>
+                            <text x="0" y="5" fill="#e0e7ff" font-family="Inter, sans-serif" font-size="14" font-weight="bold" text-anchor="middle">Células HeLa</text>
+                        </g>
+
+                        <g transform="translate(400, 280)">
+                            <rect x="-100" y="-25" width="200" height="50" rx="10" fill="#312e81" stroke="#a5b4fc" stroke-width="2"/>
+                            <text x="0" y="5" fill="#ffffff" font-family="Inter, sans-serif" font-size="13" font-weight="bold" text-anchor="middle">Comitê CEP / CONEP</text>
+                        </g>
+
+                        <!-- Connecting lines -->
+                        <line x1="220" y1="100" x2="330" y2="130" stroke="#818cf8" stroke-width="2" stroke-dasharray="4"/>
+                        <line x1="580" y1="100" x2="470" y2="130" stroke="#818cf8" stroke-width="2" stroke-dasharray="4"/>
+                        <line x1="400" y1="220" x2="400" y2="255" stroke="#818cf8" stroke-width="2"/>
+
+                        <!-- Title overlay -->
+                        <text x="35" y="45" fill="#ffffff" font-family="Inter, sans-serif" font-size="18" font-weight="bold">Esquema Científico: Bioética & Direitos Humanos</text>
+                    </svg>
+                `,
+                imageCaption: "Diagrama esquemático: Relação entre consentimento informado, ética em pesquisa e o caso histórico das células HeLa."
             },
             {
                 id: 2,
@@ -261,8 +304,40 @@
                     { title: "RNA (Ácido Ribonucleico)", desc: "Fita simples, açúcar ribose, bases nitrogenadas Adenina (A), Uracila (U), Citosina (C) e Guanina (G). Pareamento A-U e C-G." },
                     { title: "Genoma", desc: "Conjunto completo de material genético (DNA) de um organismo." }
                 ],
-                imagePath: "https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?auto=format&fit=crop&w=1000&q=80",
-                imageCaption: "Estrutura molecular da dupla hélice do DNA e filamentos de ácidos nucleicos."
+                svgDiagram: `
+                    <svg viewBox="0 0 800 360" class="w-full h-full bg-gradient-to-br from-slate-900 via-indigo-950 to-slate-900" xmlns="http://www.w3.org/2000/svg">
+                        <!-- DNA Double Helix Representation -->
+                        <g transform="translate(200, 180)">
+                            <!-- Strand 1 -->
+                            <path d="M-100 -100 C -50 -50, -50 50, -100 100 M-50 -100 C 0 -50, 0 50, -50 100 M0 -100 C 50 -50, 50 50, 0 100" stroke="#818cf8" stroke-width="4" fill="none"/>
+                            <text x="-75" y="-120" fill="#a5b4fc" font-family="Inter, sans-serif" font-size="14" font-weight="bold" text-anchor="middle">DNA (Dupla Hélice)</text>
+                            
+                            <!-- Base pairs rungs -->
+                            <line x1="-80" y1="-70" x2="-20" y2="-70" stroke="#34d399" stroke-width="3"/>
+                            <line x1="-70" y1="-20" x2="-30" y2="-20" stroke="#f43f5e" stroke-width="3"/>
+                            <line x1="-80" y1="30" x2="-20" y2="30" stroke="#34d399" stroke-width="3"/>
+                            <line x1="-75" y1="80" x2="-25" y2="80" stroke="#fbbf24" stroke-width="3"/>
+                        </g>
+
+                        <!-- VS Divider -->
+                        <line x1="400" y1="60" x2="400" y2="300" stroke="rgba(255,255,255,0.1)" stroke-width="2" stroke-dasharray="6"/>
+
+                        <!-- RNA Single Strand Representation -->
+                        <g transform="translate(600, 180)">
+                            <path d="M0 -100 C 30 -50, -30 0, 0 50 C 30 100, 0 120, 0 130" stroke="#f43f5e" stroke-width="5" fill="none" stroke-linecap="round"/>
+                            <text x="0" y="-120" fill="#fda4af" font-family="Inter, sans-serif" font-size="14" font-weight="bold" text-anchor="middle">RNA (Fita Simples)</text>
+                            
+                            <!-- Nucleotides tags -->
+                            <circle cx="0" cy="-60" r="8" fill="#34d399"/>
+                            <circle cx="0" cy="0" r="8" fill="#fbbf24"/>
+                            <circle cx="0" cy="60" r="8" fill="#60a5fa"/>
+                        </g>
+
+                        <!-- Title overlay -->
+                        <text x="35" y="45" fill="#ffffff" font-family="Inter, sans-serif" font-size="18" font-weight="bold">Esquema Comparativo: DNA vs. RNA</text>
+                    </svg>
+                `,
+                imageCaption: "Diagrama estrutural comparativo: DNA (dupla hélice, desoxirribose, Timina) versus RNA (fita simples, ribose, Uracila)."
             },
             {
                 id: 3,
@@ -280,8 +355,30 @@
                     { title: "Fita Molde", desc: "A fita de DNA que é lida pela enzima para determinar a sequência de bases do RNA mensageiro." },
                     { title: "Tipos de RNA", desc: "mRNA (Mensageiro - traz a receita), tRNA (Transportador - carrega aminoácidos) e rRNA (Ribossômico - forma os ribossomos)." }
                 ],
-                imagePath: "https://images.unsplash.com/photo-1579165466741-7f35e4755660?auto=format&fit=crop&w=1000&q=80",
-                imageCaption: "Representação esquemática da Transcrição: síntese de mRNA a partir da fita molde de DNA."
+                svgDiagram: `
+                    <svg viewBox="0 0 800 360" class="w-full h-full bg-gradient-to-br from-slate-900 via-indigo-950 to-slate-900" xmlns="http://www.w3.org/2000/svg">
+                        <!-- DNA Strand Unzipping -->
+                        <path d="M100 180 Q 250 120, 400 180 T 700 180" stroke="#818cf8" stroke-width="4" fill="none"/>
+                        <path d="M100 220 Q 250 160, 400 220 T 700 220" stroke="#818cf8" stroke-width="4" fill="none"/>
+                        
+                        <!-- RNA Polymerase Enzyme Complex -->
+                        <g transform="translate(350, 200)">
+                            <ellipse cx="0" cy="0" rx="60" ry="40" fill="#4f46e5" opacity="0.8" stroke="#a5b4fc" stroke-width="2"/>
+                            <text x="0" y="5" fill="#ffffff" font-family="Inter, sans-serif" font-size="12" font-weight="bold" text-anchor="middle">RNA Polimerase</text>
+                        </g>
+
+                        <!-- Emerging mRNA Transcript -->
+                        <path d="M350 160 C 350 100, 450 80, 550 60" stroke="#34d399" stroke-width="6" fill="none" stroke-linecap="round"/>
+                        <text x="480" y="55" fill="#34d399" font-family="Inter, sans-serif" font-size="13" font-weight="bold">mRNA (Transcrito)</text>
+
+                        <!-- Labels -->
+                        <text x="120" y="150" fill="#a5b4fc" font-family="Inter, sans-serif" font-size="14" font-weight="bold">Fita Molde de DNA</text>
+                        
+                        <!-- Title overlay -->
+                        <text x="35" y="45" fill="#ffffff" font-family="Inter, sans-serif" font-size="18" font-weight="bold">Esquema do Processo de Transcrição (Núcleo)</text>
+                    </svg>
+                `,
+                imageCaption: "Esquema da Transcrição: A RNA Polimerase abre a fita dupla de DNA no núcleo e sintetiza o filamento de RNA mensageiro (mRNA)."
             },
             {
                 id: 4,
@@ -299,8 +396,36 @@
                     { title: "Ribossomo", desc: "Organela citoplasmática formada por rRNA e proteínas que promove o encaixe perfeito entre mRNA e tRNAs." },
                     { title: "Cadeia Polipeptídica", desc: "Sequência de aminoácidos unida por ligações peptídicas que se dobra para formar uma proteína funcional." }
                 ],
-                imagePath: "https://images.unsplash.com/photo-1530497610245-94d3c16cda28?auto=format&fit=crop&w=1000&q=80",
-                imageCaption: "Tradução proteica nos ribossomos: leitura de códons e montagem da cadeia polipeptídica."
+                svgDiagram: `
+                    <svg viewBox="0 0 800 360" class="w-full h-full bg-gradient-to-br from-slate-900 via-indigo-950 to-slate-900" xmlns="http://www.w3.org/2000/svg">
+                        <!-- mRNA strand horizontal -->
+                        <line x1="100" y1="220" x2="700" y2="220" stroke="#34d399" stroke-width="6" stroke-linecap="round"/>
+                        <text x="100" y="250" fill="#34d399" font-family="Inter, sans-serif" font-size="13" font-weight="bold">mRNA (Códons)</text>
+
+                        <!-- Ribosome subunits -->
+                        <path d="M 250 180 Q 400 130, 550 180 Z" fill="#4f46e5" opacity="0.9"/>
+                        <path d="M 250 220 Q 400 270, 550 220 Z" fill="#6366f1" opacity="0.9"/>
+                        <text x="400" y="205" fill="#ffffff" font-family="Inter, sans-serif" font-size="14" font-weight="bold" text-anchor="middle">Ribossomo</text>
+
+                        <!-- tRNA molecules delivering amino acids -->
+                        <g transform="translate(380, 120)">
+                            <path d="M0 40 L-15 10 L15 10 Z" fill="#f43f5e"/>
+                            <circle cx="0" cy="0" r="12" fill="#fbbf24"/>
+                            <text x="0" y="5" fill="#1e1b4b" font-family="Inter, sans-serif" font-size="10" font-weight="bold" text-anchor="middle">AA</text>
+                            <text x="0" y="65" fill="#fda4af" font-family="Inter, sans-serif" font-size="11" font-weight="bold">tRNA</text>
+                        </g>
+
+                        <!-- Growing Polypeptide Chain -->
+                        <path d="M 330 110 Q 360 80, 390 100" stroke="#fbbf24" stroke-width="5" fill="none" stroke-linecap="round"/>
+                        <circle cx="330" cy="110" r="8" fill="#fbbf24"/>
+                        <circle cx="360" cy="85" r="8" fill="#34d399"/>
+                        <circle cx="390" cy="100" r="8" fill="#f43f5e"/>
+
+                        <!-- Title overlay -->
+                        <text x="35" y="45" fill="#ffffff" font-family="Inter, sans-serif" font-size="18" font-weight="bold">Esquema da Tradução Proteica (Citoplasma)</text>
+                    </svg>
+                `,
+                imageCaption: "Esquema da Tradução: O ribossomo lê os códons do mRNA e o tRNA traz os aminoácidos correspondentes para formar a proteína."
             },
             {
                 id: 5,
@@ -317,8 +442,31 @@
                     { title: "Sistema CRISPR/Cas9", desc: "Tecnologia inspirada em defesas bacterianas que atua como um 'bisturi molecular', cortando, corrigindo ou desativando genes com alta precisão." },
                     { title: "Confiabilidade de Fontes", desc: "Critérios fundamentais para avaliar notícias científicas: reputação da fonte, metodologia clara, autoria e dados validados." }
                 ],
-                imagePath: "https://images.unsplash.com/photo-1530026405186-ed1f139313f8?auto=format&fit=crop&w=1000&q=80",
-                imageCaption: "Biotecnologia e Edição Genética de Precisão (CRISPR/Cas9) em laboratório avançado."
+                svgDiagram: `
+                    <svg viewBox="0 0 800 360" class="w-full h-full bg-gradient-to-br from-slate-900 via-indigo-950 to-slate-900" xmlns="http://www.w3.org/2000/svg">
+                        <!-- DNA Double Strand being targeted -->
+                        <line x1="150" y1="180" x2="650" y2="180" stroke="#818cf8" stroke-width="5" stroke-linecap="round"/>
+                        <line x1="150" y1="210" x2="650" y2="210" stroke="#818cf8" stroke-width="5" stroke-linecap="round"/>
+
+                        <!-- CRISPR Cas9 Enzyme Protein -->
+                        <g transform="translate(400, 195)">
+                            <rect x="-70" y="-50" width="140" height="100" rx="25" fill="#4f46e5" stroke="#a5b4fc" stroke-width="3"/>
+                            <text x="0" y="5" fill="#ffffff" font-family="Inter, sans-serif" font-size="16" font-weight="bold" text-anchor="middle">Cas9 (Bisturi)</text>
+                        </g>
+
+                        <!-- Guide RNA arrow -->
+                        <path d="M 400 90 Q 400 120, 400 145" stroke="#34d399" stroke-width="4" fill="none" marker-end="url(#arrow)"/>
+                        <text x="400" y="75" fill="#34d399" font-family="Inter, sans-serif" font-size="13" font-weight="bold" text-anchor="middle">RNA Guia (Direciona o Corte)</text>
+
+                        <!-- Scissors / Precision Cut indicator -->
+                        <circle cx="400" cy="195" r="12" fill="#f43f5e" />
+                        <text x="400" y="199" fill="#ffffff" font-family="Inter, sans-serif" font-size="12" font-weight="bold" text-anchor="middle">✂</text>
+
+                        <!-- Title overlay -->
+                        <text x="35" y="45" fill="#ffffff" font-family="Inter, sans-serif" font-size="18" font-weight="bold">Esquema da Tecnologia CRISPR/Cas9 (Edição Gênica)</text>
+                    </svg>
+                `,
+                imageCaption: "Esquema CRISPR/Cas9: O RNA guia localiza a sequência exata no DNA e a enzima Cas9 atua como bisturi molecular de alta precisão."
             },
             {
                 id: 6,
@@ -335,8 +483,33 @@
                     { title: "Clonagem Terapêutica", desc: "Produção de células-tronco ou tecidos em laboratório com foco exclusivo na regeneração de órgãos e tratamento de doenças." },
                     { title: "Clonagem Reprodutiva", desc: "Processo para gerar um novo organismo completo e geneticamente idêntico ao doador (ex: Ovelha Dolly)." }
                 ],
-                imagePath: "https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&w=1000&q=80",
-                imageCaption: "Tecnologia de DNA Recombinante e culturas celulares para biofármacos."
+                svgDiagram: `
+                    <svg viewBox="0 0 800 360" class="w-full h-full bg-gradient-to-br from-slate-900 via-indigo-950 to-slate-900" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Bacterial Plasmid Circle -->
+                        <circle cx="250" cy="190" r="50" fill="none" stroke="#34d399" stroke-width="8" stroke-dasharray="15 5"/>
+                        <text x="250" y="195" fill="#34d399" font-family="Inter, sans-serif" font-size="12" font-weight="bold" text-anchor="middle">Plasmídeo</text>
+
+                        <!-- Human Gene Segment -->
+                        <path d="M 400 160 Q 450 140, 500 160" stroke="#f43f5e" stroke-width="6" fill="none"/>
+                        <text x="450" y="130" fill="#f43f5e" font-family="Inter, sans-serif" font-size="12" font-weight="bold" text-anchor="middle">Gene da Insulina</text>
+
+                        <!-- Plus Sign -->
+                        <text x="330" y="195" fill="#ffffff" font-family="Inter, sans-serif" font-size="28" font-weight="bold" text-anchor="middle">+</text>
+
+                        <!-- Recombinant DNA Result Arrow & Plasmid -->
+                        <line x1="560" y1="190" x2="620" y2="190" stroke="#818cf8" stroke-width="4" marker-end="url(#arrow)"/>
+                        
+                        <g transform="translate(700, 190)">
+                            <circle cx="0" cy="0" r="50" fill="none" stroke="#34d399" stroke-width="8"/>
+                            <path d="M -30 -10 Q 0 -30, 30 -10" stroke="#f43f5e" stroke-width="8" fill="none"/>
+                            <text x="0" y="70" fill="#a5b4fc" font-family="Inter, sans-serif" font-size="13" font-weight="bold" text-anchor="middle">DNA Recombinante</text>
+                        </g>
+
+                        <!-- Title overlay -->
+                        <text x="35" y="45" fill="#ffffff" font-family="Inter, sans-serif" font-size="18" font-weight="bold">Esquema do DNA Recombinante (Produção de Insulina)</text>
+                    </svg>
+                `,
+                imageCaption: "Esquema do DNA Recombinante: Inserção do gene humano da insulina em plasmídeo bacteriano para produção biotecnológica."
             }
         ];
 
@@ -404,7 +577,7 @@
                 </button>
             `).join('');
 
-            // Detail Card with precise scientific imagery
+            // Detail Card with SVG Educational Infographic
             const lesson = lessons.find(l => l.id === currentLessonId);
             const detailContainer = document.getElementById('lesson-detail');
             detailContainer.innerHTML = `
@@ -414,14 +587,14 @@
                     <p class="text-slate-600 text-sm sm:text-base mt-1">${lesson.subtitle}</p>
                 </div>
 
-                <!-- Scientific Image in normal flow block -->
-                <div class="w-full rounded-2xl overflow-hidden shadow-md bg-slate-900 mb-6">
-                    <div class="h-64 sm:h-72 w-full overflow-hidden relative">
-                        <img src="${lesson.imagePath}" alt="${lesson.title}" class="w-full h-full object-cover transform hover:scale-105 transition-transform duration-500" />
+                <!-- Custom Scientific SVG Infographic Diagram -->
+                <div class="w-full rounded-2xl overflow-hidden shadow-lg bg-slate-900 mb-6 border border-slate-800">
+                    <div class="h-64 sm:h-80 w-full relative">
+                        ${lesson.svgDiagram}
                     </div>
                     <div class="p-4 bg-slate-900 text-white border-t border-slate-800">
                         <p class="text-xs sm:text-sm font-medium leading-relaxed text-indigo-200">
-                            <i class="fas fa-microscope mr-1.5"></i> ${lesson.imageCaption}
+                            <i class="fas fa-microscope mr-1.5 text-indigo-400"></i> ${lesson.imageCaption}
                         </p>
                     </div>
                 </div>
