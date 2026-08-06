@@ -13,7 +13,7 @@
 </head>
 <body class="bg-slate-50 text-slate-800 flex flex-col min-h-screen selection:bg-indigo-500 selection:text-white">
     <!-- Header -->
-    <header class="bg-slate-900 text-white border-b border-slate-800 sticky top-0 z-50 backdrop-blur-md bg-opacity-95">
+    <header class="bg-slate-900 text-white border-b border-slate-800 sticky top-0 z-50 backdrop-blur-md bg-opacity-95 shadow-md">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
             <div class="flex items-center space-x-3">
                 <div class="bg-indigo-600 p-2.5 rounded-xl shadow-lg shadow-indigo-500/30 flex items-center justify-center">
@@ -42,20 +42,20 @@
     </header>
 
     <!-- Mobile Nav -->
-    <div class="md:hidden bg-slate-800 text-white px-4 py-2 flex justify-around border-b border-slate-700">
-        <button onclick="switchTab('lessons')" id="m-btn-lessons" class="text-xs font-medium py-1 px-3 rounded bg-indigo-600 text-white">Aulas (1-6)</button>
-        <button onclick="switchTab('activity')" id="m-btn-activity" class="text-xs font-medium py-1 px-3 rounded text-slate-300">Atividade</button>
-        <button onclick="switchTab('slides')" id="m-btn-slides" class="text-xs font-medium py-1 px-3 rounded text-slate-300">Slides</button>
+    <div class="md:hidden bg-slate-800 text-white px-4 py-3 flex justify-around border-b border-slate-700">
+        <button onclick="switchTab('lessons')" id="m-btn-lessons" class="text-xs font-medium py-1.5 px-3 rounded bg-indigo-600 text-white">Aulas (1-6)</button>
+        <button onclick="switchTab('activity')" id="m-btn-activity" class="text-xs font-medium py-1.5 px-3 rounded text-slate-300">Atividade</button>
+        <button onclick="switchTab('slides')" id="m-btn-slides" class="text-xs font-medium py-1.5 px-3 rounded text-slate-300">Slides</button>
     </div>
 
     <!-- Main Container -->
-    <main class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <main class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
         
         <!-- SECTION: LESSONS -->
         <div id="view-lessons" class="space-y-8">
             <!-- Hero Banner -->
-            <div class="bg-gradient-to-r from-indigo-900 via-slate-900 to-indigo-950 text-white rounded-3xl p-8 sm:p-10 shadow-2xl relative overflow-hidden border border-indigo-500/20">
-                <div class="max-w-3xl relative z-10">
+            <div class="bg-gradient-to-r from-indigo-900 via-slate-900 to-indigo-950 text-white rounded-3xl p-8 sm:p-10 shadow-xl border border-indigo-500/20">
+                <div class="max-w-3xl">
                     <span class="inline-flex items-center space-x-2 bg-indigo-500/20 text-indigo-300 px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider mb-4 border border-indigo-500/30">
                         <i class="fas fa-sparkles text-xs"></i>
                         <span>Plataforma Didática Otimizada</span>
@@ -64,7 +64,7 @@
                         Da Molécula de DNA à Bioética e Engenharia Genética
                     </h2>
                     <p class="text-slate-300 text-base sm:text-lg mb-6 leading-relaxed">
-                        Explore os resumos essenciais das <strong>Aulas 1 a 6</strong> do 3º bimestre. Clique nos conceitos abaixo para expandir as definições e otimize suas aulas.
+                        Explore os resumos essenciais das <strong>Aulas 1 a 6</strong> do 3º bimestre. Utilize os módulos ao lado para revisar conceitos e otimizar suas aulas.
                     </p>
                     <button onclick="switchTab('activity')" class="bg-indigo-600 hover:bg-indigo-500 text-white font-medium px-6 py-3 rounded-xl transition-all shadow-lg shadow-indigo-600/30 flex items-center space-x-2">
                         <span>Ir para Atividade Prática</span>
@@ -84,8 +84,8 @@
                 </div>
 
                 <!-- Active Lesson Card -->
-                <div class="lg:col-span-8 bg-white rounded-2xl shadow-sm border border-slate-200 p-6 sm:p-8" id="lesson-detail">
-                    <!-- Populated by JS -->
+                <div class="lg:col-span-8 bg-white rounded-2xl shadow-sm border border-slate-200 p-6 sm:p-8 space-y-6" id="lesson-detail">
+                    <!-- Populated by JS with normal flow blocks -->
                 </div>
             </div>
         </div>
@@ -351,22 +351,22 @@
             document.getElementById('btn-activity').className = "px-4 py-2 rounded-lg text-sm font-medium transition-all text-slate-300 hover:bg-slate-800 hover:text-white flex items-center space-x-1.5";
             document.getElementById('btn-slides').className = "px-4 py-2 rounded-lg text-sm font-medium transition-all text-slate-300 hover:bg-slate-800 hover:text-white flex items-center space-x-1.5";
 
-            document.getElementById('m-btn-lessons').className = "text-xs font-medium py-1 px-3 rounded text-slate-300";
-            document.getElementById('m-btn-activity').className = "text-xs font-medium py-1 px-3 rounded text-slate-300";
-            document.getElementById('m-btn-slides').className = "text-xs font-medium py-1 px-3 rounded text-slate-300";
+            document.getElementById('m-btn-lessons').className = "text-xs font-medium py-1.5 px-3 rounded text-slate-300";
+            document.getElementById('m-btn-activity').className = "text-xs font-medium py-1.5 px-3 rounded text-slate-300";
+            document.getElementById('m-btn-slides').className = "text-xs font-medium py-1.5 px-3 rounded text-slate-300";
 
             if (tab === 'lessons') {
                 document.getElementById('view-lessons').classList.remove('hidden');
                 document.getElementById('btn-lessons').className = "px-4 py-2 rounded-lg text-sm font-medium transition-all bg-indigo-600 text-white shadow-md";
-                document.getElementById('m-btn-lessons').className = "text-xs font-medium py-1 px-3 rounded bg-indigo-600 text-white";
+                document.getElementById('m-btn-lessons').className = "text-xs font-medium py-1.5 px-3 rounded bg-indigo-600 text-white";
             } else if (tab === 'activity') {
                 document.getElementById('view-activity').classList.remove('hidden');
                 document.getElementById('btn-activity').className = "px-4 py-2 rounded-lg text-sm font-medium transition-all bg-indigo-600 text-white shadow-md flex items-center space-x-1.5";
-                document.getElementById('m-btn-activity').className = "text-xs font-medium py-1 px-3 rounded bg-indigo-600 text-white";
+                document.getElementById('m-btn-activity').className = "text-xs font-medium py-1.5 px-3 rounded bg-indigo-600 text-white";
             } else if (tab === 'slides') {
                 document.getElementById('view-slides').classList.remove('hidden');
                 document.getElementById('btn-slides').className = "px-4 py-2 rounded-lg text-sm font-medium transition-all bg-indigo-600 text-white shadow-md flex items-center space-x-1.5";
-                document.getElementById('m-btn-slides').className = "text-xs font-medium py-1 px-3 rounded bg-indigo-600 text-white";
+                document.getElementById('m-btn-slides').className = "text-xs font-medium py-1.5 px-3 rounded bg-indigo-600 text-white";
             }
         }
 
@@ -404,7 +404,7 @@
                 </button>
             `).join('');
 
-            // Detail Card
+            // Detail Card with block flow to avoid overlaps
             const lesson = lessons.find(l => l.id === currentLessonId);
             const detailContainer = document.getElementById('lesson-detail');
             detailContainer.innerHTML = `
@@ -414,14 +414,17 @@
                     <p class="text-slate-600 text-sm sm:text-base mt-1">${lesson.subtitle}</p>
                 </div>
 
-                <div class="relative rounded-2xl overflow-hidden shadow-md mb-8 group bg-slate-900 h-64 sm:h-80">
-                    <img src="${lesson.imagePath}" alt="${lesson.title}" class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105" />
-                    <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-950/20 to-transparent flex flex-col justify-end p-6">
-                        <p class="text-white text-sm font-medium leading-snug">${lesson.imageCaption}</p>
+                <!-- Image in normal flow block -->
+                <div class="w-full rounded-2xl overflow-hidden shadow-md bg-slate-900 mb-6">
+                    <div class="h-64 sm:h-72 w-full overflow-hidden relative">
+                        <img src="${lesson.imagePath}" alt="${lesson.title}" class="w-full h-full object-cover transform hover:scale-105 transition-transform duration-500" />
+                    </div>
+                    <div class="p-4 bg-slate-900 text-white">
+                        <p class="text-xs sm:text-sm font-medium leading-snug">${lesson.imageCaption}</p>
                     </div>
                 </div>
 
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 my-6">
                     <div class="bg-slate-50 p-5 rounded-2xl border border-slate-100">
                         <h4 class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-2 flex items-center space-x-2">
                             <i class="fas fa-book text-indigo-600"></i>
@@ -441,7 +444,7 @@
                     </div>
                 </div>
 
-                <div>
+                <div class="mt-6">
                     <h4 class="text-base font-bold text-slate-900 mb-4">Conceitos Chave & Definições (Clique para Expandir)</h4>
                     <div class="space-y-3">
                         ${lesson.concepts.map((c, idx) => `
